@@ -2,7 +2,7 @@ import aes_tool
 import rsa_tool
 
 print("="*50)
-print("        TEXT ENCRYPTION TOOL (AES + RSA)")
+print("        SafeCrypt")
 print("="*50)
 
 print("\nSelect Encryption Type:")

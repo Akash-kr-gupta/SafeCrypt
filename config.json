@@ -1,0 +1,62 @@
+{
+  "app": {
+    "name": "Advanced Encryption Tool",
+    "version": "2.0",
+    "edition": "Enhanced",
+    "author": "Akash Kumar Gupta",
+    "year": 2026,
+    "project": "Cybersecurity Internship 2026"
+  },
+  "ui": {
+    "theme": "light",
+    "dark_mode_available": true,
+    "window_width": 1400,
+    "window_height": 900,
+    "font_family": "Segoe UI"
+  },
+  "encryption": {
+    "aes": {
+      "enabled": true,
+      "algorithm": "Fernet (AES-128 CBC)",
+      "key_derivation": "SHA256",
+      "default_password_length": 16
+    },
+    "rsa": {
+      "enabled": true,
+      "key_size": 2048,
+      "padding": "OAEP",
+      "hash_algorithm": "SHA256"
+    }
+  },
+  "features": {
+    "password_generator": true,
+    "file_hash_calculator": true,
+    "batch_operations": true,
+    "key_management": true,
+    "recent_files": true,
+    "dark_mode": true,
+    "digital_signatures": true
+  },
+  "security": {
+    "min_password_length": 6,
+    "recommended_password_length": 16,
+    "hash_algorithms": ["sha256", "sha512", "md5", "sha1"],
+    "default_hash": "sha256"
+  },
+  "files": {
+    "recent_files_history": "recent_files.json",
+    "max_recent_items": 10,
+    "backup_enabled": false
+  },
+  "limits": {
+    "aes_max_file_size": "unlimited",
+    "rsa_max_msg_size": 190,
+    "batch_max_files": 1000,
+    "password_max_length": 256
+  },
+  "performance": {
+    "batch_processing": "sequential",
+    "file_chunk_size": 4096,
+    "progress_update_interval": 100
+  }
+}
