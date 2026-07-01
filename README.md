@@ -560,3 +560,4 @@ Render cannot run the desktop tkinter app directly, but it can host the Flask AP
 ### Post-Deploy Checks
 - Open `https://your-service.onrender.com/health` and confirm `{ "status": "healthy" }`
 - Open `https://your-service.onrender.com/` to view the endpoint list
+

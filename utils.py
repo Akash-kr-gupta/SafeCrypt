@@ -187,3 +187,4 @@ def get_file_info(file_path):
         "size_bytes": os.path.getsize(file_path),
         "modified": datetime.fromtimestamp(os.path.getmtime(file_path)).strftime("%Y-%m-%d %H:%M:%S")
     }
+

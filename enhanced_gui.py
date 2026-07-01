@@ -656,3 +656,4 @@ display_key_info()
 refresh_recent()
 
 root.mainloop()
+
