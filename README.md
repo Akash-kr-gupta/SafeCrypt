@@ -478,3 +478,85 @@ For issues or questions:
 **Last Updated**: April 2026  
 **Version**: 2.0 (Enhanced Edition)  
 **Status**: ✅ Production Ready
+
+## ▲ Deploy To Vercel
+
+Vercel cannot host the desktop tkinter GUI directly. This repository now includes a Python API wrapper that exposes SafeCrypt functionality as HTTP endpoints.
+
+### Files Added For Deployment
+- `api/index.py` (Flask serverless API)
+- `vercel.json` (Vercel build and routing config)
+
+### 1) Install Vercel CLI
+```bash
+npm install -g vercel
+```
+
+### 2) Install Python dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 3) Run locally (optional)
+```bash
+vercel dev
+```
+
+### 4) Deploy
+```bash
+vercel
+```
+
+### 5) Production deploy
+```bash
+vercel --prod
+```
+
+### API Endpoints
+- `GET /`
+- `GET /health`
+- `POST /aes/encrypt`
+- `POST /aes/decrypt`
+- `POST /rsa/generate-keys`
+- `POST /rsa/encrypt`
+- `POST /rsa/decrypt`
+- `POST /rsa/sign`
+- `POST /rsa/verify`
+
+### Example Request
+```bash
+curl -X POST http://localhost:3000/aes/encrypt \
+    -H "Content-Type: application/json" \
+    -d '{"message":"hello","password":"StrongPass123!"}'
+```
+
+## Deploy To Render
+
+Render cannot run the desktop tkinter app directly, but it can host the Flask API in `api/index.py`.
+
+### Included Render Files
+- `render.yaml` (Blueprint service config)
+- `runtime.txt` (Python version)
+
+### Option A: Blueprint Deploy (recommended)
+1. Push this repository to GitHub.
+2. In Render Dashboard, click **New** → **Blueprint**.
+3. Select this repository.
+4. Render will detect `render.yaml` and create `safecrypt-api`.
+5. Wait for deploy to finish and open the generated URL.
+
+### Option B: Manual Web Service
+1. In Render Dashboard, click **New** → **Web Service**.
+2. Connect your GitHub repo.
+3. Set Runtime to **Python**.
+4. Set Build Command:
+    `pip install -r requirements.txt`
+5. Set Start Command:
+    `gunicorn api.index:app --bind 0.0.0.0:$PORT`
+6. Set Health Check Path:
+    `/health`
+7. Click **Create Web Service**.
+
+### Post-Deploy Checks
+- Open `https://your-service.onrender.com/health` and confirm `{ "status": "healthy" }`
+- Open `https://your-service.onrender.com/` to view the endpoint list
